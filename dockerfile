@@ -43,14 +43,6 @@ RUN mkdir /dependencies && \
     wget --no-verbose --tries=3 https://cran.r-project.org/src/contrib/Archive/kpmt/kpmt_0.1.0.tar.gz && \
     R -e "install.packages('/dependencies/kpmt_0.1.0.tar.gz', repos = NULL, type = 'source')"
 
-    BiocManager::install(c(
-        "minfi",
-        "DMRcate",
-        "IlluminaHumanMethylationEPICmanifest",
-        "IlluminaHumanMethylation450kmanifest",
-        "IlluminaHumanMethylationEPICanno.ilm10b4.hg19",
-        "bumphunter"
-      ), ask = FALSE)
 ### ---- Install ChAMP and other dependencies explicitly (faster & robust) ----
 RUN R -e "BiocManager::install(c( \
   'minfi', \
