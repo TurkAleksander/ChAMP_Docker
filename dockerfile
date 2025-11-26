@@ -21,6 +21,13 @@ RUN apt-get update && apt-get install -y \
     libglpk40 \
     libgmp-dev \
     libssh2-1-dev \
+    libbz2-dev \
+    liblzma-dev \
+    zlib1g-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    build-essential \
     wget \
     && apt-get clean
 
@@ -35,11 +42,23 @@ RUN mkdir /dependencies && \
     cd /dependencies && \
     wget --no-verbose --tries=3 https://cran.r-project.org/src/contrib/Archive/kpmt/kpmt_0.1.0.tar.gz && \
     R -e "install.packages('/dependencies/kpmt_0.1.0.tar.gz', repos = NULL, type = 'source')"
+
+    BiocManager::install(c(
+        "minfi",
+        "DMRcate",
+        "IlluminaHumanMethylationEPICmanifest",
+        "IlluminaHumanMethylation450kmanifest",
+        "IlluminaHumanMethylationEPICanno.ilm10b4.hg19",
+        "bumphunter"
+      ), ask = FALSE)
 ### ---- Install ChAMP and other dependencies explicitly (faster & robust) ----
 RUN R -e "BiocManager::install(c( \
   'minfi', \
   'IlluminaHumanMethylationEPICanno.ilm10b4.hg19', \
   'IlluminaHumanMethylation450kmanifest', \
+  'IlluminaHumanMethylationEPICmanifest', \
+  'missMethyl', \
+  'bumphunter', \
   'limma', \
   'sva', \
   'ChIPseeker',\
