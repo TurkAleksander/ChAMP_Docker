@@ -51,7 +51,7 @@ RUN R -e "BiocManager::install(c( \
   'dplyr', \
   'stringr', \
   'magrittr', \
-  'stringi', \
+  'stringi' \
   ), ask=FALSE)"
 
 ### ---- Install ChAMP (the default version is 2.29.1) ----
