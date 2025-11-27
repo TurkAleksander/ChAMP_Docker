@@ -1,8 +1,12 @@
+#Load libraries
 library(ChAMP)
+library(ChAMPdata)
 library(dplyr)
 library(magrittr)
 library(stringr)
 library(stringi)
+#Load annotation data
+data("AnnoEPICv2")
 
 #Function to parse named arguments
 parseArgs <- function(args) {
@@ -24,7 +28,8 @@ resultsDir <- parsedArgs$outputDir
 sampleSheet <- parsedArgs$sampleSheet
 
 #Load .idat files from specified directory
-epicDataRaw <- ChAMP::champ.load(directory = dataDir,
+myLoad <- ChAMP::champ.load(directory = dataDir,
                                  arraytype = "EPIC",
                                  filterXY = FALSE)
+
 
