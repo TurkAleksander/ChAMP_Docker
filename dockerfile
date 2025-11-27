@@ -57,12 +57,15 @@ RUN R -e "BiocManager::install(c( \
   'missMethyl', \
   'DMRcate',\
   'DSS',\
+  'foreach', \
+  'doParallel',\
   'DMRloc',\
   'MultiAssayExperiment', \
   'dplyr', \
   'stringr', \
   'magrittr', \
-  'stringi' \
+  'stringi', \
+  'ggplot' \
   ), ask=FALSE)"
 
 ### ---- Install ChAMP (the default version is 2.29.1) ----
@@ -71,6 +74,7 @@ RUN R -e "install.packages('remotes', repos='https://cloud.r-project.org'); \
 RUN R -e "remotes::install_github('YuanTian1991/CHAMPdata')"
 RUN R -e "library('CHAMPdata')"
 RUN R -e "data('AnnoEPICv2')"
+
 
 ### ---- Optional: Set working directory ----
 RUN mkdir /work && \
