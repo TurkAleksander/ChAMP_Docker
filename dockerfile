@@ -65,7 +65,13 @@ RUN R -e "BiocManager::install(c( \
   'stringr', \
   'magrittr', \
   'stringi', \
-  'ggplot' \
+  'ggplot2', \
+  'karyoploteR', \
+  'GenomicRanges', \
+  'pheatmap', \
+  'readxl', \
+  'readr', \
+  'IlluminaHumanMethylationEPICv2anno.20a1.hg38' \
   ), ask=FALSE)"
 
 ### ---- Install ChAMP (the default version is 2.29.1) ----
